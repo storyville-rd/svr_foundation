@@ -1,0 +1,15 @@
+<!-- Paste this into the app's CLAUDE.md (or AGENTS.md). Adjust the paths if the app installs svr_brand elsewhere. -->
+## Storyville RD brand (svr_brand)
+
+This app uses the Storyville RD brand from `vendor/svr_brand/`, installed with `npm run brand:install`. The brand docs are in `docs/brand/`.
+
+- **Never edit anything in `vendor/svr_brand/`, `public/svr/` or `docs/brand/`.** They're installed copies, checked by `npm run brand:check`. Brand changes are made in the svr_brand repo and installed as a new release. To update: run `node vendor/svr_brand/scripts/install.mjs --latest`, change the tag in the `brand:install` script, run it, and read `docs/brand/CHANGELOG.md`. If the installed copy is older than v3.3.1, run the new release's `install.mjs` once from outside `vendor/` instead (see INSTALL.md). Commit the installed folders (if `.gitignore` ignores `dist`, keep the `!/vendor/svr_brand/dist/` line), and make sure `npm run brand:check` passes.
+- **Colors:** style with the role tokens only. That means `--svr-color-bg`, `-text`, `-heading`, `-text-muted`, `-surface-alt`, `-border` (dividers), `-border-strong` (control edges), `-accent` (red text and rules), `-accent-fill` / `-on-accent` (red fills), `-focus`, `-link` and the status colors (`-danger`, `-success`, `-warning`, `-info`, each with `-subtle` and `on-`). They switch between light and dark on their own. Never hard-code hex values or write separate dark-mode rules. Never use pure #FFFFFF or #000000.
+- **Errors** use `--svr-color-danger`, never the brand red. Status always comes with a word (Badge, Alert), never color alone.
+- **Classes and variables:** everything from the brand starts with `svr-` (`svr-btn`, `svr-display-h1`, `--svr-space-4`…). Don't give the app's own classes that prefix, or the app's variables a reserved one (`--svr-color-*`, `--svr-palette-*`, `--svr-space-*`, `--svr-radius-*`, `--svr-rule-*`, `--svr-font-*`).
+- **Components:** prefer the components in `vendor/svr_brand/react/Storyville.jsx` (`Button`, `Field`/`Input`/`Select`/`Textarea`/`Checkbox`/`Radio`, `Badge`, `Alert`, `Card`, `Surface`, `ThemeToggle`…) and the `svr-prose`, `svr-nav`, `svr-popover` and `svr-dialog` classes. Tailwind apps use the brand utilities (`bg-svr-bg`, `text-svr-accent`…) and shadcn components, which the bridge styles.
+- **Type:** Bebas Neue for headings only, Source Sans 3 for everything else. Use the `svr-display-h1`, `svr-subheading-h2`, `svr-h3`, `svr-h4`, `svr-body`, `svr-ui` and `svr-caption` classes.
+- **Shape:** no drop shadows or gradients; nearly square corners (`--svr-radius-sm` / `-md`).
+- **Light and dark:** every screen must work in both themes. Client-facing pages render `<html data-theme="light" data-svr-pinned>`.
+- **Accessibility:** meet WCAG 2.2 AA. Follow `docs/brand/docs/ACCESSIBILITY.md`, which covers alt text (logos use the text they contain), keyboard behavior, the shared shortcuts, forms and captions.
+- **Full brand rules:** `docs/brand/docs/BRAND.md`. Components: `docs/brand/docs/components/`. Email: `docs/brand/docs/EMAIL.md`.

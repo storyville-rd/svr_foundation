@@ -1,0 +1,43 @@
+name = "svr-services"
+main = "src/index.ts"
+compatibility_date = "2025-09-01"
+
+# widget/dist/ is gitignored (build output), so this must run before every dev/deploy —
+# including Cloudflare Workers Builds, which just runs `npx wrangler deploy` with a fresh clone.
+[build]
+command = "npm run build:widget"
+
+[[d1_databases]]
+binding = "DB"
+# TEST database for the new platform Worker. Deliberately NOT the live "bugs" D1 of svr-bug-report: two Workers
+# draining one database would post every report to Monday twice. Create it with
+#   npx wrangler d1 create bugs-platform
+# then paste the printed id here and run `npx wrangler d1 migrations apply bugs-platform --remote`.
+database_name = "bugs-platform"
+database_id = "REPLACE_WITH_NEW_D1_ID"
+migrations_dir = "migrations"
+
+[triggers]
+crons = ["* * * * *"]
+
+# Lets index.ts `import widgetSource from "../widget/dist/w.js.txt"` as a plain string
+# instead of wrangler trying to parse the built widget as another Worker module.
+[[rules]]
+type = "Text"
+globs = ["**/*.js.txt"]
+fallthrough = true
+
+[vars]
+MONDAY_BOARD_ID = "18431056223"
+MONDAY_GROUP_ID = "topics"
+TURNSTILE_ENABLED = "true"
+
+# Custom domain route — uncomment once DNS for bugs.storyvillerd.com is pointed at Cloudflare.
+# [[routes]]
+# pattern = "bugs.storyvillerd.com/*"
+# custom_domain = true
+
+# Secrets (set via `wrangler secret put <NAME>`, not stored here):
+#   MONDAY_API_TOKEN
+#   TURNSTILE_SECRET_KEY
+#   IP_HASH_SALT

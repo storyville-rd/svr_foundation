@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Widget demo — content-box + global resets</title>
+<style>
+  /* Deliberately hostile global CSS: content-box box-sizing everywhere, plus resets
+     that a lot of older sites still ship, to prove the widget's Shadow DOM isolates it. */
+  * {
+    box-sizing: content-box;
+  }
+  button, input, textarea {
+    border: 4px dashed red;
+    font-size: 30px;
+    background: yellow;
+  }
+  body {
+    font-family: "Comic Sans MS", cursive;
+    background: #222;
+    color: #eee;
+    padding: 40px;
+  }
+</style>
+</head>
+<body>
+  <h1>content-box host page</h1>
+  <p>
+    Every element on this page uses <code>box-sizing: content-box</code> and heavy-handed
+    global button/input/textarea styling. If the widget's shadow root is working, the
+    "Report a Bug" button and its modal should render cleanly, unaffected by any of this.
+  </p>
+  <button type="button">A normal page button (intentionally ugly)</button>
+  <input type="text" placeholder="A normal page input (intentionally ugly)">
+
+  <script src="http://127.0.0.1:8787/w.js" data-app="test-app" data-build="demo" data-position="bottom-left" defer></script>
+</body>
+</html>

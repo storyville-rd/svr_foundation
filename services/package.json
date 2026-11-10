@@ -1,0 +1,24 @@
+{
+  "name": "svr-bug-report",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "build:widget": "node widget/build.mjs",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "add-app": "node scripts/add-app.mjs",
+    "setup-monday-columns": "node scripts/setup-monday-columns.mjs",
+    "db:migrate:local": "wrangler d1 migrations apply bugs --local",
+    "db:migrate:remote": "wrangler d1 migrations apply bugs --remote"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260915.1",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.84.1"
+  }
+}
