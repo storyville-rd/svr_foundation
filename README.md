@@ -2,7 +2,7 @@
 
 > **Platform repo (in progress, not yet live).** This repo is a combined successor to `svr_brand` and `svr_bug_report`, so apps wire up one repo. The originals are untouched and still serve every existing app. Layout:
 > - **Repo root:** the brand (tokens, CSS, fonts, components, installer, docs) plus the browser-side widgets in `components/`. `components/bug-report.js` is the bug-report widget, reading the real `--svr-*` tokens. Its endpoint is `data-endpoint`, else the services Worker.
-> - **[services/](services/):** the shared services Worker (`svr-services`): bug-report API, D1, cron drain to Monday, and a legacy `/w.js` that re-serves the widget. See [services/README.md](services/README.md).
+> - **[services/](services/):** the shared services Worker (`svr-foundation`): bug-report API, D1, cron drain to Monday, and a legacy `/w.js` that re-serves the widget. See [services/README.md](services/README.md).
 > - Names in the docs below still say `svr_brand` until the repo name is final and the CDN paths are cut over.
 
 The single source of truth for Storyville RD's brand in code: color and type tokens (light and dark), fonts, logos, the light/dark toggle and React components. Every Storyville app links these files from the jsDelivr CDN, so a brand change made here reaches every app.

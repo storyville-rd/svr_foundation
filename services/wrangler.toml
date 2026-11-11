@@ -1,4 +1,4 @@
-name = "svr-services"
+name = "svr-foundation"
 main = "src/index.ts"
 compatibility_date = "2025-09-01"
 

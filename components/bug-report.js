@@ -10,7 +10,7 @@
 
   // Where reports are sent. Order: data-endpoint attribute, then the script's own origin when it is served by the
   // services Worker (the legacy /w.js embed), otherwise the shared services Worker below (CDN-hosted copy).
-  var DEFAULT_ENDPOINT = "https://svr-services.carissa-4f6.workers.dev";
+  var DEFAULT_ENDPOINT = "https://svr-foundation.carissa-4f6.workers.dev";
   var scriptOrigin = new URL(script.src).origin;
   var onCdn = /(^|\.)jsdelivr\.net$|(^|\.)githubusercontent\.com$|(^|\.)unpkg\.com$/.test(new URL(script.src).hostname);
   var origin = (script.getAttribute("data-endpoint") || (onCdn ? DEFAULT_ENDPOINT : scriptOrigin)).replace(/\/+$/, "");
