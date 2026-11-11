@@ -51,7 +51,7 @@ console.log(`Running against ${target}:\n${sql}\n`);
 // which rejects OAuth-token logins with "Authentication error [code: 10000]".
 const require = createRequire(import.meta.url);
 const wranglerBin = path.join(path.dirname(require.resolve("wrangler/package.json")), "bin", "wrangler.js");
-const result = spawnSync(process.execPath, [wranglerBin, "d1", "execute", "bugs", target, "--command", sql], {
+const result = spawnSync(process.execPath, [wranglerBin, "d1", "execute", "bugs-platform", target, "--command", sql], {
   stdio: "inherit",
 });
 
