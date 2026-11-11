@@ -1,31 +1,31 @@
 {
   "name": "svr_brand",
-  "version": "3.3.2",
+  "version": "3.4.0",
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 8863,
-      "sha256": "1e7987566206515a0f022f8b1899a2e6beee15b9c751f09ff2b13ee2af5f850a"
+      "bytes": 9900,
+      "sha256": "b2f7935bdb95ad656f98251399f54ff6010640aebfee1be4c265ea38cf1856a9"
     },
     {
       "path": "INSTALL.md",
-      "bytes": 18009,
-      "sha256": "f4615a173b5b9094f4427d1a153bde8a462b28f9f062843deba5c46f32b9c0ca"
+      "bytes": 19032,
+      "sha256": "2f7435cace4925b4ab5fdfa353c13d254d2418cafb2d62f6ea38cfbd1dfce0d6"
     },
     {
       "path": "README.md",
-      "bytes": 16812,
-      "sha256": "5162aff7cd2e8230d71ed371d40536f7eb203edc432ea32c985ab1eec8660719"
+      "bytes": 17791,
+      "sha256": "e69d1adb0064d9f922d93dd977e9ca8a773426b2a9ab5d0ffa2b0aba7034b2c4"
     },
     {
       "path": "VERSION",
-      "bytes": 6,
-      "sha256": "abba5fcd6d1275d62d78e09d88276dcf264d2137f85323ab50eadddcc31aeea9"
+      "bytes": 5,
+      "sha256": "1ec5554278285c6a62a49f623a23277f39517fd3ad1271b80c85d3c126b86580"
     },
     {
       "path": "components/bug-report.js",
-      "bytes": 22152,
-      "sha256": "f3a1f48e7dd0cf4c2caf84533a94bbb1bb8a1fa0f614026f21375ea3361d66d2"
+      "bytes": 23235,
+      "sha256": "c3eee8585bbb247155045fa9577a20808b9ca24ad848cba372465742f6ba44e4"
     },
     {
       "path": "components/index.d.ts",
@@ -45,12 +45,12 @@
     {
       "path": "dist/storyville.css",
       "bytes": 38688,
-      "sha256": "9ef553365df2e601a79275afc5c645eeef480c021f44824bd3bb3fa0e564a8fc"
+      "sha256": "471aebeae355ce4107a4e0fd6b7a4bfdd422ca91b9a7e7fbe2e5ac312301d8fd"
     },
     {
       "path": "dist/tailwind-bridge.css",
       "bytes": 5227,
-      "sha256": "aa59f5cb0546d41311d4f8ace77177265e87d5954cdfa3385e9e8da702bb34ba"
+      "sha256": "155adb4b4cbb203948c6dbf1cce27a9ea0f202cc037a5678e71fe55f63592c22"
     },
     {
       "path": "docs/ACCESSIBILITY.md",
@@ -81,6 +81,11 @@
       "path": "docs/components/Badge.md",
       "bytes": 792,
       "sha256": "21221f8bc489f1728328e9eb2ec8658d0d20029d2cbf56c90804bb1e14cc1397"
+    },
+    {
+      "path": "docs/components/BugReport.md",
+      "bytes": 2726,
+      "sha256": "7b1506c57e15a19245ac7121d31e6146486df67e2b54b0fec0f73ead3f565568"
     },
     {
       "path": "docs/components/Button.md",
@@ -269,13 +274,13 @@
     },
     {
       "path": "scripts/install.mjs",
-      "bytes": 21820,
-      "sha256": "51082dc3b8ae678228e1b914ddd9f71947d7e7caa46eb0d39c86909a5dab9f18"
+      "bytes": 21835,
+      "sha256": "1c32880ee01d4b7966e91b6ca7e4594927cf1e0c4f52595551eba421865fd415"
     },
     {
       "path": "services/README.md",
-      "bytes": 8621,
-      "sha256": "34091fec1d5f174f409e82828c1808b68d33b0ceda8ac6eeabe6e9394c903186"
+      "bytes": 10449,
+      "sha256": "19ba4e90f2f3feb80d27d0fe9b28e984971d9ec57cdacccb0b4d0e9bdec84648"
     },
     {
       "path": "services/examples/demo-bootstrap.html",
@@ -304,8 +309,8 @@
     },
     {
       "path": "services/scripts/add-app.mjs",
-      "bytes": 2351,
-      "sha256": "02baeb7babf4981e2856d6072a63ecdcb947b2fad5dd9967ff5de8b53b381ac0"
+      "bytes": 2360,
+      "sha256": "debe2bc1079b9b44b5358493e974db53c7ad4d11c229fd972cc3dec18e88110d"
     },
     {
       "path": "services/scripts/setup-monday-columns.mjs",
@@ -334,8 +339,8 @@
     },
     {
       "path": "services/src/ingest.ts",
-      "bytes": 8733,
-      "sha256": "c80d539b83c61c5c8ecdaa192726d6c4f15d4e04deead1b3db78848ad138d83b"
+      "bytes": 9279,
+      "sha256": "1e0ca6574d6c0393132509f86658c561b703097302b77ec42efdf8e5ace9b4e1"
     },
     {
       "path": "services/src/monday.ts",
@@ -389,18 +394,18 @@
     },
     {
       "path": "services/widget/dist/w.js.txt",
-      "bytes": 14757,
-      "sha256": "fa3d9f7848841f39e77c38b82323087ed4fea08c2c2bbf66de8068642275acf0"
+      "bytes": 14759,
+      "sha256": "601d83c28ddf70ce809d4761992eb98fb9370101d72ee4ea60e6d9161337c56e"
     },
     {
       "path": "services/wrangler.toml",
-      "bytes": 1115,
-      "sha256": "0075ce349391c548bac87e12924a2e451e6479b05bf6adbde0c71cfa668a6527"
+      "bytes": 1457,
+      "sha256": "41dbbef4647243052395746c4b0ea4310c9f3f04b0f371d2bdcab271c1a25cbf"
     },
     {
       "path": "tokens/tokens.css",
       "bytes": 16971,
-      "sha256": "c0196811a7a679b0609f4c2b3520a29f1036e5ce9918c51b9a7423b6818c6138"
+      "sha256": "7971833411de5bbc2541ab216b60fb2d2bd1d58ea5d0fc33d1c19cd3e61f253c"
     },
     {
       "path": "tokens/tokens.json",

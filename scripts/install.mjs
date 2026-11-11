@@ -12,9 +12,9 @@
 //             Vite bundles the CSS and fonts; it does not bundle these.
 //   --docs    also install the brand docs (BRAND.md, ACCESSIBILITY.md, EMAIL.md, component docs, CLAUDE-snippet.md, README,
 //             CHANGELOG, INSTALL) into this folder, e.g. docs/brand, so people and Claude can read them inside the app.
-//   --repo    default storyville-rd/svr_brand
+//   --repo    default storyville-rd/svr_foundation
 //   --commit  install this exact commit instead of looking the tag up through the GitHub API (or when rate-limited)
-//   --from    install from a local checkout of svr_brand instead of GitHub (bootstrap, offline, testing)
+//   --from    install from a local checkout of svr_foundation instead of GitHub (bootstrap, offline, testing)
 //   --check   verify an installed copy against its manifest, and that git isn't ignoring any of it; exits 1 on any
 //             problem. --public/--docs default to the folders recorded at install time.
 //   --remote  with --check: also fetch manifest.json at the installed commit from GitHub and verify against that, which
@@ -337,7 +337,7 @@ async function main() {
   const flag = (name) => { const i = args.indexOf(name); if (i < 0) return undefined; const v = args[i + 1]; args.splice(i, 2); return v; };
   const has = (name) => { const i = args.indexOf(name); if (i < 0) return false; args.splice(i, 1); return true; };
   const mode = has('--check') ? 'check' : has('--latest') ? 'latest' : 'install';
-  const opts = { remote: has('--remote'), repo: flag('--repo') || 'storyville-rd/svr_brand', commit: flag('--commit'), from: flag('--from'), pub: flag('--public'), docs: flag('--docs') };
+  const opts = { remote: has('--remote'), repo: flag('--repo') || 'storyville-rd/svr_foundation', commit: flag('--commit'), from: flag('--from'), pub: flag('--public'), docs: flag('--docs') };
   if (!/^[\w.-]+\/[\w.-]+$/.test(opts.repo)) fail(`bad --repo "${opts.repo}"`);
   if (mode === 'latest') return latest(args, opts.repo);
   if (mode === 'check') return check(args, opts);

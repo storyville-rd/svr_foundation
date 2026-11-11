@@ -2,6 +2,14 @@
 
 Every release is a git tag. Breaking releases (a new major number) list what each app has to change.
 
+## 3.4.0
+
+First release from the **`svr_foundation`** repo, which replaces `svr_brand` (and absorbs `svr_bug_report`). No change to tokens, CSS or components; the brand package keeps its name and install path (`vendor/svr_brand`).
+
+- **New:** `components/bug-report.js`, the shared bug-report widget (red bug button; the "Report a Bug" label slides out on hover or focus). It reads the real `--svr-*` tokens, so it follows the page's theme. Docs: `docs/components/BugReport.md`. Reports go to the services Worker in `services/`.
+- **Changed:** releases come from `storyville-rd/svr_foundation`. The installer's default `--repo` and every URL in the README and `INSTALL.md` now point there. Apps already on an older copy run the installer once with `--repo storyville-rd/svr_foundation`; see "Moving an app from the old svr_brand repo" in `INSTALL.md`. CDN apps change the repo name in their URLs.
+- **New:** `services/`, the shared services Worker (bug-report intake, D1, cron drain to Monday). It is not part of the installed package.
+
 ## 3.3.2
 
 Docs only: no CSS, component or installer code changes.

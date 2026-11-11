@@ -1,9 +1,9 @@
 # Storyville RD Brand
 
-> **Platform repo (in progress, not yet live).** This repo is a combined successor to `svr_brand` and `svr_bug_report`, so apps wire up one repo. The originals are untouched and still serve every existing app. Layout:
-> - **Repo root:** the brand (tokens, CSS, fonts, components, installer, docs) plus the browser-side widgets in `components/`. `components/bug-report.js` is the bug-report widget, reading the real `--svr-*` tokens. Its endpoint is `data-endpoint`, else the services Worker.
+> **`svr_foundation` is the combined successor to `svr_brand` and `svr_bug_report`,** so an app wires up one repo. Layout:
+> - **Repo root:** the brand package (tokens, CSS, fonts, components, installer, docs) plus the browser-side widgets in `components/`. The package is still called **`svr_brand`**: apps install it at `vendor/svr_brand`, so installed paths don't change. The repo name only changes where releases come from. The bug-report widget is `components/bug-report.js` ([docs/components/BugReport.md](docs/components/BugReport.md)).
 > - **[services/](services/):** the shared services Worker (`svr-foundation`): bug-report API, D1, cron drain to Monday, and a legacy `/w.js` that re-serves the widget. See [services/README.md](services/README.md).
-> - Names in the docs below still say `svr_brand` until the repo name is final and the CDN paths are cut over.
+> - **Moving an app from the old `svr_brand` repo:** see "Moving an app from the old svr_brand repo" in [INSTALL.md](INSTALL.md). The old repos keep working until every app has moved.
 
 The single source of truth for Storyville RD's brand in code: color and type tokens (light and dark), fonts, logos, the light/dark toggle and React components. Every Storyville app links these files from the jsDelivr CDN, so a brand change made here reaches every app.
 
@@ -16,7 +16,7 @@ Accessibility rules (alt text, keyboard, shared shortcuts, motion, captions, for
 
 ## Use it in an app
 
-Apps either link the files from the jsDelivr CDN (below) or install a copy of a release ([INSTALL.md](INSTALL.md)). Tailwind apps that use the bridge must install. Either way, every link below is pinned to a release tag (`@v3.3.2`). Pin your app to a tag, never `@main`, so a brand change only reaches an app when you choose to update it.
+Apps either link the files from the jsDelivr CDN (below) or install a copy of a release ([INSTALL.md](INSTALL.md)). Tailwind apps that use the bridge must install. Either way, every link below is pinned to a release tag (`@v3.4.0`). Pin your app to a tag, never `@main`, so a brand change only reaches an app when you choose to update it.
 
 ### 1. The `<head>`: layer order, theme, styles
 
@@ -24,16 +24,16 @@ Put these three lines at the very top of every app's `<head>`, in this order:
 
 ```html
 <style>@layer theme, base, svr, components, utilities;</style>
-<script src="https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/js/theme.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/dist/storyville.css">
+<script src="https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/js/theme.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/dist/storyville.css">
 ```
 
 Then add the favicons and browser theme color:
 
 ```html
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/icons/favicon.ico" sizes="48x48">
-<link rel="icon" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/icons/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/icons/apple-touch-icon.png">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/icons/favicon.ico" sizes="48x48">
+<link rel="icon" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/icons/apple-touch-icon.png">
 <meta name="theme-color" content="#FAF8F5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#211D1B" media="(prefers-color-scheme: dark)">
 ```
@@ -121,7 +121,7 @@ Tailwind has to process the file, so it can't be linked from the CDN; install it
 ### 5. Logos
 
 ```html
-<img src="https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/logos/storyville-logo-horizontal-charcoal.png" alt="Storyville RD">
+<img src="https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/logos/storyville-logo-horizontal-charcoal.png" alt="Storyville RD">
 ```
 
 | File (in `logos/`) | Use | Alt text |
@@ -154,7 +154,7 @@ A logo's alt text is the text it contains; never add "logo" or "image of". Charc
   ```html
   <script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/components/storyville.global.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/components/storyville.global.js"></script>
   ```
 
 ## Naming and layers
@@ -164,7 +164,7 @@ A logo's alt text is the text it contains; never add "logo" or "image of". Charc
 
 ## Upgrading an app
 
-**From v3.3.1 to v3.3.2:** docs only; run `brand:install` with the new tag.
+**From v3.3.1 to v3.4.0:** docs only; run `brand:install` with the new tag.
 
 **From v3.3.0 or older to v3.3.1 or later:** run the new release's `install.mjs` once from outside `vendor/` ([INSTALL.md](INSTALL.md#1-install-a-release-with-the-script), "Upgrading from a copy older than v3.3.1"), because `brand:install` would run the old installer. Then check the warning about git-ignored files ([INSTALL.md](INSTALL.md#committing-the-install)).
 

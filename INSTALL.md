@@ -9,19 +9,27 @@ There are two ways to use the brand in an app:
 
 `scripts/install.mjs` installs a release the same way in every app. It needs Node 18 or later and has no dependencies.
 
-Releases are git tags (`v3.3.2`); the installer and the CDN both read tags. Publishing a GitHub Release for a tag is optional.
+Releases are git tags (`v3.4.0`); the installer and the CDN both read tags. Publishing a GitHub Release for a tag is optional.
+
+### Moving an app from the old svr_brand repo
+
+Releases from `v3.4.0` on come from `storyville-rd/svr_foundation`; earlier releases (up to v3.3.2) stay in the old `storyville-rd/svr_brand` repo, which is no longer updated. The `vendor/svr_brand` folder name does not change. An app that has already installed the brand moves once:
+
+1. Run the new installer from outside `vendor/`, with the new repo and tag: `node ../svr-install.mjs v3.4.0 vendor/svr_brand --public public/svr --docs docs/brand --repo storyville-rd/svr_foundation` (download the script as shown under "Upgrading from a copy older than v3.3.1", using the `svr_foundation` URL). The installer already in `vendor/` still defaults to the old repo, so `--repo` is needed this once.
+2. After that, `npm run brand:install` and `brand:latest` use the new repo by default. Use the new tag in the `brand:install` script.
+3. CDN apps change `svr_brand@v3.3.2` in their `<link>` and `<script>` URLs to `svr_foundation@v3.4.0`.
 
 **First time only**, get the script into the app at `vendor/svr_brand/scripts/install.mjs`. Choose one way:
 
-- **From the CDN:** download `https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/scripts/install.mjs`. This is easiest. jsDelivr caches tags, so a tag that was moved after release can briefly serve the old file. The first install replaces this copy with the checked one anyway.
-- **From GitHub at an exact commit:** download `https://raw.githubusercontent.com/storyville-rd/svr_brand/<commit-sha>/scripts/install.mjs`, using the commit shown on the tag's GitHub page.
-- **From a local checkout of svr_brand** (no download): `node ../svr_brand/scripts/install.mjs v3.3.2 vendor/svr_brand --public public/svr --docs docs/brand --from ../svr_brand`. This works offline. It checks the files against the checkout's manifest, but can't vouch for the checkout matching the tag, so check out the tag first.
+- **From the CDN:** download `https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/scripts/install.mjs`. This is easiest. jsDelivr caches tags, so a tag that was moved after release can briefly serve the old file. The first install replaces this copy with the checked one anyway.
+- **From GitHub at an exact commit:** download `https://raw.githubusercontent.com/storyville-rd/svr_foundation/<commit-sha>/scripts/install.mjs`, using the commit shown on the tag's GitHub page.
+- **From a local checkout of svr_foundation** (no download): `node ../svr_foundation/scripts/install.mjs v3.4.0 vendor/svr_brand --public public/svr --docs docs/brand --from ../svr_foundation`. This works offline. It checks the files against the checkout's manifest, but can't vouch for the checkout matching the tag, so check out the tag first.
 
 Then add these npm scripts to the app's `package.json`:
 
 ```json
 "scripts": {
-  "brand:install": "node vendor/svr_brand/scripts/install.mjs v3.3.2 vendor/svr_brand --public public/svr --docs docs/brand",
+  "brand:install": "node vendor/svr_brand/scripts/install.mjs v3.4.0 vendor/svr_brand --public public/svr --docs docs/brand",
   "brand:check": "node vendor/svr_brand/scripts/install.mjs --check vendor/svr_brand",
   "brand:latest": "node vendor/svr_brand/scripts/install.mjs --latest vendor/svr_brand"
 }
@@ -32,11 +40,11 @@ Run `npm run brand:install` to install or update, and change the tag in that lin
 **Upgrading from a copy older than v3.3.1? Run the new installer once from outside `vendor/`.** `npm run brand:install` runs the installer that's already in `vendor/svr_brand/`, which is the old one. Releases before 3.3.1 rename folders, which fails with `EPERM` on Windows whenever an editor or watcher has the project open. For that one upgrade, download the new script somewhere outside `vendor/` and run it from the app's root folder:
 
 ```
-curl -fsSL -o ../svr-install.mjs https://cdn.jsdelivr.net/gh/storyville-rd/svr_brand@v3.3.2/scripts/install.mjs
-node ../svr-install.mjs v3.3.2 vendor/svr_brand --public public/svr --docs docs/brand
+curl -fsSL -o ../svr-install.mjs https://cdn.jsdelivr.net/gh/storyville-rd/svr_foundation@v3.4.0/scripts/install.mjs
+node ../svr-install.mjs v3.4.0 vendor/svr_brand --public public/svr --docs docs/brand
 ```
 
-The first line works in PowerShell and Command Prompt on Windows 10 and 11, as well as in macOS and Linux terminals. Use the same `--public` and `--docs` folders as the app's `brand:install` script. Running the script from a local checkout of svr_brand (`--from`, above) works too. Once the app has v3.3.1 or later, `npm run brand:install` is safe again and you can delete `../svr-install.mjs`.
+The first line works in PowerShell and Command Prompt on Windows 10 and 11, as well as in macOS and Linux terminals. Use the same `--public` and `--docs` folders as the app's `brand:install` script. Running the script from a local checkout of svr_foundation (`--from`, above) works too. Once the app has v3.3.1 or later, `npm run brand:install` is safe again and you can delete `../svr-install.mjs`.
 
 What the script does:
 
@@ -93,7 +101,7 @@ If an app already has CRLF copies (for example, installed before 3.3.0), `brand:
 
 A single file can still be locked. The installer retries each write for about 8 seconds. If that file stays locked, it restores the previous copy and names the file. Stop the dev server (or close whatever has the file open) and run the install again. Unchanged files aren't rewritten, so a locked file that didn't change doesn't block anything.
 
-**Never edit installed files in an app.** Change the brand in the svr_brand repo and install the new release. Edits made in an app are lost at the next install, and `brand:check` flags them.
+**Never edit installed files in an app.** Change the brand in the svr_foundation repo and install the new release. Edits made in an app are lost at the next install, and `brand:check` flags them.
 
 ### Committing the install
 
