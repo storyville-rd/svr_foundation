@@ -25,9 +25,12 @@ function json(data: unknown, status: number, extraHeaders?: HeadersInit): Respon
   });
 }
 
+// The preflight is answered for any origin of a known app. The allowlist is enforced on the POST itself (below),
+// and the rejection there carries CORS headers, so a page on an unregistered origin sees "origin not allowed"
+// instead of an opaque "Failed to fetch". An unknown app key still gets a bare 403 so keys can't be probed.
 export function handlePreflight(request: Request, appOrigins: string[] | null): Response {
   const origin = request.headers.get("Origin") ?? "";
-  if (!appOrigins || !appOrigins.includes(origin)) {
+  if (!appOrigins || !origin) {
     return new Response(null, { status: 403 });
   }
   return new Response(null, { status: 204, headers: corsHeaders(origin) });
@@ -98,7 +101,12 @@ export async function handleIngest(request: Request, env: Env, appKey: string): 
 
   const origin = request.headers.get("Origin") ?? "";
   if (!app.origins.includes(origin)) {
-    return json({ ok: false, error: "origin not allowed" }, 403);
+    // CORS headers on the rejection so the widget can show a clear message; nothing else is processed or returned.
+    return json(
+      { ok: false, error: `origin not allowed: add ${origin || "this site"} to the app's origins` },
+      403,
+      origin ? corsHeaders(origin) : undefined
+    );
   }
   const headers = corsHeaders(origin);
 
