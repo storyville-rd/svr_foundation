@@ -14,7 +14,7 @@ binding = "DB"
 #   npx wrangler d1 create bugs-platform
 # then paste the printed id here and run `npx wrangler d1 migrations apply bugs-platform --remote`.
 database_name = "bugs-platform"
-database_id = "REPLACE_WITH_NEW_D1_ID"
+database_id = "b6f93516-6ec7-42bb-a77b-54166134ca11"
 migrations_dir = "migrations"
 
 [triggers]
