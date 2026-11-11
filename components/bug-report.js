@@ -142,12 +142,19 @@
 --on-accent:var(--f-on-accent);--muted:var(--f-muted);--strong:var(--f-strong);--overlay:var(--f-overlay);
 --danger:var(--f-danger);--success:var(--f-success);--success-bg:var(--f-success-bg)}
 *{box-sizing:border-box;font-family:var(--svr-font-body,"Source Sans 3",Calibri,sans-serif)}
-.br-btn{position:fixed;z-index:2147483000;width:44px;height:44px;display:grid;place-items:center;padding:0;
-background:var(--fill);color:var(--on-accent);border:2px solid var(--bg);border-radius:2px;cursor:pointer;
+.br-btn{position:fixed;z-index:2147483000;height:44px;display:flex;align-items:center;justify-content:flex-end;padding:0;
+overflow:hidden;background:var(--fill);color:var(--on-accent);border:2px solid var(--bg);border-radius:2px;cursor:pointer;
 transition:background-color .15s,color .15s}
-.br-btn svg{width:22px;height:22px}
+.br-ico{flex:none;width:40px;height:40px;display:grid;place-items:center}
+.br-ico svg{width:22px;height:22px}
+.br-text{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;font-size:14px;font-weight:700;letter-spacing:.04em;
+text-transform:uppercase;line-height:1;transition:max-width .2s ease,opacity .15s ease,padding .2s ease}
+.br-btn:focus-visible .br-text{max-width:240px;opacity:1;padding-left:14px}
+@media (hover:hover){.br-btn:hover .br-text{max-width:240px;opacity:1;padding-left:14px}}
 .br-btn:hover{background:var(--heading);color:var(--bg)}
-.br-btn.left{left:16px}.br-btn.right{right:16px}
+.br-btn.left{left:16px;flex-direction:row-reverse}.br-btn.left:focus-visible .br-text{padding-left:0;padding-right:14px}
+@media (hover:hover){.br-btn.left:hover .br-text{padding-left:0;padding-right:14px}}
+.br-btn.right{right:16px}
 .br-btn:focus-visible,.br-actions button:focus-visible{outline:2px solid var(--heading);outline-offset:2px}
 .br-overlay{position:fixed;inset:0;background:var(--overlay);z-index:2147483001;
 display:flex;align-items:center;justify-content:center;padding:16px}
@@ -191,7 +198,7 @@ transition:background-color .15s,color .15s,border-color .15s}
 .br-success b{display:block;margin-bottom:4px;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--success)}
 .br-hp{display:none}
 @media (forced-colors:active){.br-btn,.br-actions button{border:2px solid ButtonText}}
-@media (prefers-reduced-motion:reduce){.br-btn,.br-actions button{transition:none}}
+@media (prefers-reduced-motion:reduce){.br-btn,.br-text,.br-actions button{transition:none}}
 `;
 
   var host = document.createElement("div");
@@ -235,8 +242,16 @@ transition:background-color .15s,color .15s,border-color .15s}
   button.className = "br-btn " + (position.indexOf("left") !== -1 ? "left" : "right");
   button.type = "button";
   button.setAttribute("aria-label", label);
-  button.title = label;
-  button.innerHTML = BUG_ICON;
+  // The label slides out beside the icon on hover/focus; the icon stays put. aria-label already names the button.
+  var textEl = document.createElement("span");
+  textEl.className = "br-text";
+  textEl.setAttribute("aria-hidden", "true");
+  textEl.textContent = label;
+  var icoEl = document.createElement("span");
+  icoEl.className = "br-ico";
+  icoEl.innerHTML = BUG_ICON;
+  button.appendChild(textEl);
+  button.appendChild(icoEl);
   button.style.bottom = "calc(" + offsetBottom + "px + env(safe-area-inset-bottom, 0px))";
   root.appendChild(button);
 
