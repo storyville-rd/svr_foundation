@@ -2,6 +2,10 @@
 
 Every release is a git tag. Breaking releases (a new major number) list what each app has to change.
 
+## 3.5.1
+
+Fix: manifest/file mismatch warnings. `scripts/build.mjs` hashed the Windows CRLF working copy, but a release contains the LF text git stores, so most text files failed the installer's check. It now hashes LF-normalized text, and lists only files git tracks (the gitignored `services/widget/dist/w.js.txt` was listed but never shipped). No CSS or component changes. 3.5.0 has the bad manifest: use 3.5.1.
+
 ## 3.5.0
 
 - **Changed (visual):** `ThemeToggle` is now the Storyville theme icon (two arrows around a sun and a moon) instead of a "Dark mode: On/Off" text button. It is the standard for every light/dark control; text and other sun/moon variants are out. Same props, same `aria-pressed`, now with `aria-label="Dark mode"` and a `title`. Apps using the component get it on update. Apps with their own toggle should switch to the component or the markup in `docs/components/ThemeToggle.md`.

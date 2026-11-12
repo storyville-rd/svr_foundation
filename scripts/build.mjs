@@ -96,8 +96,16 @@ const walk = (dir) => readdirSync(dir).flatMap((n) => {
   const p = dir === '.' ? n : join(dir, n);
   return statSync(p).isDirectory() ? walk(p) : [p.split('\\').join('/')];
 });
-const files = walk('.').sort().map((path) => {
-  const buf = readFileSync(path);
+// Hash what a release contains: the LF text git stores, not a Windows CRLF working copy (the installer
+// compares against the release as downloaded). Gitignored build output isn't in a release, so skip it.
+import { execSync } from 'node:child_process';
+let listed;
+try { listed = execSync('git ls-files -co --exclude-standard', { encoding: 'utf8', maxBuffer: 1e8 }).split(/\r?\n/).filter(Boolean); } catch { listed = null; }
+const inRelease = (p) => !p.split('/').some((n) => SKIP.has(n) || n.startsWith('.')) && !p.endsWith('.zip') && p !== 'manifest.json';
+const paths = (listed ? listed.filter(inRelease) : walk('.')).sort();
+const files = paths.map((path) => {
+  let buf = readFileSync(path);
+  if (!buf.includes(0)) buf = Buffer.from(buf.toString('latin1').replace(/\r\n/g, '\n'), 'latin1'); // text only
   return { path, bytes: buf.length, sha256: createHash('sha256').update(buf).digest('hex') };
 });
 writeFileSync('manifest.json', JSON.stringify({ name: 'svr_brand', version, files }, null, 2) + '\n');
