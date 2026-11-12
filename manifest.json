@@ -1,11 +1,11 @@
 {
   "name": "svr_brand",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 10897,
-      "sha256": "67fc554010bc123ce3ff4006922c0ccfdd7ef43e9bc1b2cc82fffdd96dacfe4d"
+      "bytes": 10740,
+      "sha256": "6270f05caeaad2274541de109b68e6c22a140136654175882dde3be3e10c228f"
     },
     {
       "path": "INSTALL.md",
@@ -20,7 +20,7 @@
     {
       "path": "VERSION",
       "bytes": 5,
-      "sha256": "1ec5554278285c6a62a49f623a23277f39517fd3ad1271b80c85d3c126b86580"
+      "sha256": "552f154f722f0e1db8b25e81a3fee0ffa3e9b7a0527c4dc2d79759bd17feacb5"
     },
     {
       "path": "components/bug-report.js",
@@ -45,12 +45,12 @@
     {
       "path": "dist/storyville.css",
       "bytes": 40111,
-      "sha256": "609b3d20c65e27225d895c9b5f6eb5121d8f030b9d5de20c8614d535f6c122d7"
+      "sha256": "aafed8d31b419b65ebf6ffc61a1c8cbc830a444dd5bc9d60e67eef67ac2945e1"
     },
     {
       "path": "dist/tailwind-bridge.css",
       "bytes": 5227,
-      "sha256": "155adb4b4cbb203948c6dbf1cce27a9ea0f202cc037a5678e71fe55f63592c22"
+      "sha256": "4df12eeb4cb7ac629b4f621b5d69bab8e1a4c8a52ef7bc099b7e65aeb3a56754"
     },
     {
       "path": "docs/ACCESSIBILITY.md",
@@ -420,7 +420,7 @@
     {
       "path": "tokens/tokens.css",
       "bytes": 16971,
-      "sha256": "7971833411de5bbc2541ab216b60fb2d2bd1d58ea5d0fc33d1c19cd3e61f253c"
+      "sha256": "d852e552e876a8fba7be0efe75907e4262bc3d29d6aa606461eacda4f1fc4b8f"
     },
     {
       "path": "tokens/tokens.json",

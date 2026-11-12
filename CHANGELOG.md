@@ -2,7 +2,7 @@
 
 Every release is a git tag. Breaking releases (a new major number) list what each app has to change.
 
-## Unreleased
+## 3.5.0
 
 - **Changed (visual):** `ThemeToggle` is now the Storyville theme icon (two arrows around a sun and a moon) instead of a "Dark mode: On/Off" text button. It is the standard for every light/dark control; text and other sun/moon variants are out. Same props, same `aria-pressed`, now with `aria-label="Dark mode"` and a `title`. Apps using the component get it on update. Apps with their own toggle should switch to the component or the markup in `docs/components/ThemeToggle.md`.
 - **Changed (CSS):** `.svr-theme-toggle` is a 44px icon button; new `.svr-tt-arrows`, `.svr-tt-sun`, `.svr-tt-moon` classes animate the icon. It no longer uses `.svr-btn`.
