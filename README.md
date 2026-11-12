@@ -98,7 +98,7 @@ Separate pieces are also available:
 
 ### 3. Light and dark mode
 
-Every app carries a light/dark toggle. `js/theme.js` does the work; the `ThemeToggle` component is the button.
+Every app carries a light/dark toggle. `js/theme.js` does the work; the `ThemeToggle` component is the button: always the standard sun/moon icon, never text (details and SVG files in [docs/components/ThemeToggle.md](docs/components/ThemeToggle.md)).
 
 - The theme is the `data-theme` attribute on `<html>` (`light` or `dark`). With no attribute, the tokens follow the device setting.
 - Scripts can call `svrTheme.get()`, `svrTheme.set('light' | 'dark')`, `svrTheme.toggle()` and `svrTheme.reset()` (back to the device setting), and listen for the `svr-themechange` event on `window`.

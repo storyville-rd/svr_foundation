@@ -85,7 +85,7 @@ All Storyville apps share one set of shortcuts, so people learn them once.
 ## Light and dark mode
 
 - Every app offers both themes and follows the device setting until someone chooses one (see [Light and dark mode](BRAND.md#light-and-dark-mode) in the brand guidelines).
-- The toggle is a real `<button>` with a visible label and `aria-pressed`, reachable by keyboard. Use `ThemeToggle`.
+- The toggle is a real `<button>` (44px target) with the theme icon, an `aria-label` of "Dark mode", a `title` that names the action, and `aria-pressed`, reachable by keyboard. The icon is `aria-hidden`; the state is never carried by the icon alone. Use `ThemeToggle`.
 - Every text and background pairing meets contrast in both themes. Check each screen in both before shipping.
 - Images and video stills don't change with the theme. Logos do: use the off-white files in dark mode.
 

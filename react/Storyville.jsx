@@ -138,9 +138,26 @@ export function ThemeToggle({ className }) {
   const dark = theme === 'dark';
   if (pinned) return null; // always-light page: no toggle
   return (
-    <button type="button" className={cx('svr-btn', 'svr-btn-sm', 'svr-theme-toggle', className)} aria-pressed={dark}
-      onClick={() => window.svrTheme && window.svrTheme.toggle()}>
-      Dark mode<span aria-hidden="true">{dark ? ': On' : ': Off'}</span>
+    <button type="button" className={cx('svr-theme-toggle', className)} aria-label="Dark mode" aria-pressed={dark}
+      title={dark ? 'Switch to light mode' : 'Switch to dark mode'} onClick={() => window.svrTheme && window.svrTheme.toggle()}>
+      {/* Icon only (never text). Current mode large/top-left, other mode small/bottom-right; arrows say "click to switch". Animation is in css/components.css. */}
+      <svg viewBox="0 0 48 48" width="40" height="40" aria-hidden="true" focusable="false">
+        <g className="svr-tt-arrows" fill="currentColor" stroke="currentColor" strokeWidth="2.3" strokeLinecap="round">
+          <g>
+            <path fill="none" d="M30.97 9.05 A16.5 16.5 0 0 1 40.25 21.14" />
+            <polygon stroke="none" points="40.6,23.3 43.0,17.9 36.7,19.0" />
+          </g>
+          <g transform="rotate(180 24 24)">
+            <path fill="none" d="M30.97 9.05 A16.5 16.5 0 0 1 40.25 21.14" />
+            <polygon stroke="none" points="40.6,23.3 43.0,17.9 36.7,19.0" />
+          </g>
+        </g>
+        <g className="svr-tt-sun" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+          <circle cx="24" cy="24" r="4.2" />
+          <path d="M24 14.5v2.3M24 31.2v2.3M14.5 24h2.3M31.2 24h2.3M17.3 17.3l1.6 1.6M29.1 29.1l1.6 1.6M17.3 30.7l1.6-1.6M29.1 18.9l1.6-1.6" />
+        </g>
+        <g className="svr-tt-moon" fill="currentColor"><path d="M32.8 24.8A9 9 0 1 1 23.2 15a7 7 0 0 0 9.6 9.8z" /></g>
+      </svg>
     </button>
   );
 }

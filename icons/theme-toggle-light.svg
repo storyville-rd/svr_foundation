@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 56 56" width="96" height="96" style="color:#FAF8F5" role="img" aria-label="Light mode is on. Switch to dark mode.">
+  <!-- Background: delete this line for a transparent icon. The icon is off-white, so it needs a dark ground. -->
+  <rect id="bg" x="-4" y="-4" width="56" height="56" rx="7" fill="#211D1B"/>
+  <g opacity=".7" fill="currentColor" stroke="currentColor" stroke-width="2.3" stroke-linecap="round">
+    <g>
+      <path fill="none" d="M30.97 9.05 A16.5 16.5 0 0 1 40.25 21.14"/>
+      <polygon stroke="none" points="40.6,23.3 43.0,17.9 36.7,19.0"/>
+    </g>
+    <g transform="rotate(180 24 24)">
+      <path fill="none" d="M30.97 9.05 A16.5 16.5 0 0 1 40.25 21.14"/>
+      <polygon stroke="none" points="40.6,23.3 43.0,17.9 36.7,19.0"/>
+    </g>
+  </g>
+  <!-- Current mode: large, top-left, solid -->
+  <g id="sun" transform="matrix(1.25 0 0 1.25 -17 -17)">
+    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="24" cy="24" r="4.2"/>
+      <path d="M24 14.5v2.3M24 31.2v2.3M14.5 24h2.3M31.2 24h2.3M17.3 17.3l1.6 1.6M29.1 29.1l1.6 1.6M17.3 30.7l1.6-1.6M29.1 18.9l1.6-1.6"/>
+    </g>
+  </g>
+  <!-- Other mode: small, bottom-right, faded -->
+  <g id="moon" opacity=".45" transform="matrix(.8 0 0 .8 15.8 15.8)">
+    <g fill="currentColor"><path d="M32.8 24.8A9 9 0 1 1 23.2 15a7 7 0 0 0 9.6 9.8z"/></g>
+  </g>
+</svg>

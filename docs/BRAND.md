@@ -96,7 +96,7 @@ Every Storyville app supports both themes and has a visible light/dark toggle.
 
 - The theme lives on the page's `<html>` element: `data-theme="dark"` or `data-theme="light"`. With no attribute, the page follows the device's setting.
 - Each app starts in the device setting. Once someone uses the toggle, their choice is remembered for that app (the `svr-theme` key in the browser's storage).
-- Put the toggle somewhere it can always be reached, such as the app header or the settings menu. It's a button labeled "Dark mode" that reports its state to screen readers (`aria-pressed`). Use the `ThemeToggle` component.
+- Put the toggle somewhere it can always be reached, such as the app header or the settings menu. It is always the Storyville theme icon (two arrows around a sun and a moon; the current mode is large and solid, the other small and faded), never text, a checkbox or another sun/moon glyph. It's an icon button labeled "Dark mode" for screen readers that reports its state (`aria-pressed`). Use the `ThemeToggle` component; where you can't, use the markup or SVG files in [ThemeToggle](components/ThemeToggle.md).
 - Never hard-code a color, or a light/dark pair of colors, in app CSS. Use the role tokens and the theme takes care of itself.
 - Check both themes before shipping: every screen, every state.
 - Logos switch too: charcoal versions in light mode, off-white versions in dark mode.

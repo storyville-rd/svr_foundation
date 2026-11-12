@@ -462,9 +462,19 @@
 .svr-btn:disabled, .svr-btn[aria-disabled="true"] { background: var(--svr-color-disabled-bg); border-color: var(--svr-color-disabled-bg); color: var(--svr-color-disabled-text); cursor: not-allowed; }
 .svr-btn-sm { font-size: 13px; padding: var(--svr-space-2) var(--svr-space-4); }
 
-/* Theme toggle: a small outline button; aria-pressed="true" means dark mode is on */
-.svr-theme-toggle { gap: 0; background: transparent; color: var(--svr-color-heading); border-color: var(--svr-color-heading); }
-.svr-theme-toggle:hover { background: var(--svr-color-heading); color: var(--svr-color-bg); }
+/* Theme toggle: the two-arrows sun/moon icon button (the only light/dark control; never text).
+   aria-pressed="true" means dark mode is on. Current mode = large, top-left, solid; other mode = small, bottom-right, faded. */
+.svr-theme-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; background: transparent;
+  color: var(--svr-color-heading); border: 0; border-radius: var(--svr-radius-md); cursor: pointer; transition: background-color .15s; }
+.svr-theme-toggle:hover { background: var(--svr-color-surface-alt); }
+.svr-theme-toggle:focus-visible { outline: 2px solid var(--svr-color-focus); outline-offset: 2px; }
+.svr-theme-toggle svg { width: 40px; height: 40px; }
+.svr-theme-toggle .svr-tt-arrows { opacity: .7; transition: opacity .15s; }
+.svr-theme-toggle:hover .svr-tt-arrows { opacity: .9; }
+.svr-theme-toggle .svr-tt-sun, .svr-theme-toggle .svr-tt-moon { transform-box: view-box; transform-origin: 24px 24px; transition: transform .35s ease, opacity .35s ease; }
+.svr-theme-toggle[aria-pressed="false"] .svr-tt-sun, .svr-theme-toggle[aria-pressed="true"] .svr-tt-moon { transform: translate(-11px, -11px) scale(1.25); opacity: 1; }
+.svr-theme-toggle[aria-pressed="false"] .svr-tt-moon, .svr-theme-toggle[aria-pressed="true"] .svr-tt-sun { transform: translate(11px, 11px) scale(.8); opacity: .45; }
+@media (prefers-reduced-motion: reduce) { .svr-theme-toggle .svr-tt-sun, .svr-theme-toggle .svr-tt-moon { transition: none; } }
 
 /* ---------- Eyebrow, SectionHeader ---------- */
 .svr-eyebrow { display: block; text-transform: uppercase; color: var(--svr-color-accent); margin: 0 0 var(--svr-space-1); }

@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 9900,
-      "sha256": "b2f7935bdb95ad656f98251399f54ff6010640aebfee1be4c265ea38cf1856a9"
+      "bytes": 10897,
+      "sha256": "67fc554010bc123ce3ff4006922c0ccfdd7ef43e9bc1b2cc82fffdd96dacfe4d"
     },
     {
       "path": "INSTALL.md",
@@ -14,8 +14,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 17791,
-      "sha256": "e69d1adb0064d9f922d93dd977e9ca8a773426b2a9ab5d0ffa2b0aba7034b2c4"
+      "bytes": 18165,
+      "sha256": "fb9166409306926554145c86c5a6f538199e3bc99235010f2680d03ab950f834"
     },
     {
       "path": "VERSION",
@@ -34,18 +34,18 @@
     },
     {
       "path": "components/storyville.global.js",
-      "bytes": 7431,
-      "sha256": "57647643339141d84fb2992736376d44074a0bc26a0571b243972a7f61893e3c"
+      "bytes": 8710,
+      "sha256": "ef67c224fb935a3ea736b244af3de88a3a4c95f7be21463add7b8153ae400e29"
     },
     {
       "path": "css/components.css",
-      "bytes": 19287,
-      "sha256": "463c93fb8d78994ed410f7565209be39961ef3878aa302eca46922ffe92c73cb"
+      "bytes": 20710,
+      "sha256": "224a3dae02bf76bf5e5e23f21410b0ca7f62a3d60f5f3eb9751faa293f86b883"
     },
     {
       "path": "dist/storyville.css",
-      "bytes": 38688,
-      "sha256": "471aebeae355ce4107a4e0fd6b7a4bfdd422ca91b9a7e7fbe2e5ac312301d8fd"
+      "bytes": 40111,
+      "sha256": "609b3d20c65e27225d895c9b5f6eb5121d8f030b9d5de20c8614d535f6c122d7"
     },
     {
       "path": "dist/tailwind-bridge.css",
@@ -54,13 +54,13 @@
     },
     {
       "path": "docs/ACCESSIBILITY.md",
-      "bytes": 8651,
-      "sha256": "6a85c029f29157c26866ab06cc69ad1f309770525660dfd27ce4b55273752136"
+      "bytes": 8917,
+      "sha256": "cc43708cfc1597a3969af0a9017e6d0040e9ed53b2776f3974c52651f7687ca4"
     },
     {
       "path": "docs/BRAND.md",
-      "bytes": 17364,
-      "sha256": "3967fde4df00677ffdaacd0be6bb088c90a757f53f72733d2110e3683dbcee16"
+      "bytes": 17861,
+      "sha256": "1b77a990a2b119d5df536efb467cd758af235b06bab03543b1b870a333345ca7"
     },
     {
       "path": "docs/CLAUDE-snippet.md",
@@ -129,8 +129,8 @@
     },
     {
       "path": "docs/components/ThemeToggle.md",
-      "bytes": 783,
-      "sha256": "766addec0be97106bb82f13a80ec3cca48afbc9bb287ba683defaf9a3d1bdb6c"
+      "bytes": 3911,
+      "sha256": "6e29e1c6f90f9f13fcd82fc95664542562255493bd002acebd54828c6f482273"
     },
     {
       "path": "fonts/BebasNeue-Regular-latin-ext.woff2",
@@ -203,6 +203,21 @@
       "sha256": "b9c4f43f0fc8372c7b3d2f31c42cbd7c75ebc1810fe8277f0b4ed7fcdb8d63e7"
     },
     {
+      "path": "icons/theme-toggle-dark.svg",
+      "bytes": 1425,
+      "sha256": "a26d5153f9353651ce5435944a9efbf44be54c0fc3b93213979ae8cf420041b1"
+    },
+    {
+      "path": "icons/theme-toggle-interactive.svg",
+      "bytes": 1974,
+      "sha256": "7f7f2572f8e1e66cc360002b5014f9389495407426900930343bcf17ef4e6f61"
+    },
+    {
+      "path": "icons/theme-toggle-light.svg",
+      "bytes": 1425,
+      "sha256": "b086f264cc73c39b58aa9375e36e22ce613c2fe111ccc5bd8723749128f30372"
+    },
+    {
       "path": "js/theme.d.ts",
       "bytes": 877,
       "sha256": "6e444da120d55d24d84d562542697036b51e03bcc0435acc562d96216bafe71a"
@@ -264,8 +279,8 @@
     },
     {
       "path": "react/Storyville.jsx",
-      "bytes": 7406,
-      "sha256": "dc79c899fcf6a1f6deea9946ea0c6fe3241cbe3151fb561a9d3abe73026f3320"
+      "bytes": 8785,
+      "sha256": "f29d4c725c5010eb29d050a0f300205dd5f1b2ff5c5244b9021398a7bf8f78f9"
     },
     {
       "path": "scripts/build.mjs",
